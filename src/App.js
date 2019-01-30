@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import _ from 'lodash';
-import {Button, Row, Col} from 'react-bootstrap';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faStar, faCheck, faTimes, faInfinity} from '@fortawesome/free-solid-svg-icons';
+import { Button, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar, faCheck, faTimes, faInfinity } from '@fortawesome/free-solid-svg-icons';
 
-const starIcon = <FontAwesomeIcon icon={faStar} className="stars"/>
-const checkIcon = <FontAwesomeIcon icon={faCheck}/>
-const timesIcon = <FontAwesomeIcon icon={faTimes}/>
-const infinityIcon = <FontAwesomeIcon icon={faInfinity}/>
+const starIcon = <FontAwesomeIcon icon={faStar} className="stars" />
+const checkIcon = <FontAwesomeIcon icon={faCheck} />
+const timesIcon = <FontAwesomeIcon icon={faTimes} />
+const infinityIcon = <FontAwesomeIcon icon={faInfinity} />
 
 const Stars = (props) => {
     let stars = _.range(props.numberOfStars).map(i => starIcon);
@@ -159,11 +159,11 @@ class Game extends Component {
 
     acceptAnswer = () => {
         this.setState(prevState => ({
-                usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
-                selectedNumbers: [],
-                answerIsCorrect: null,
-                randomNumberOfStars: Game.calcRandomNoOfStars()
-            }),
+            usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
+            selectedNumbers: [],
+            answerIsCorrect: null,
+            randomNumberOfStars: Game.calcRandomNoOfStars()
+        }),
             this.updateGameStatus
         );
     };
@@ -174,11 +174,11 @@ class Game extends Component {
         }
 
         this.setState(prevState => ({
-                availableRedraws: prevState.availableRedraws - 1,
-                selectedNumbers: [],
-                answerIsCorrect: null,
-                randomNumberOfStars: Game.calcRandomNoOfStars()
-            }),
+            availableRedraws: prevState.availableRedraws - 1,
+            selectedNumbers: [],
+            answerIsCorrect: null,
+            randomNumberOfStars: Game.calcRandomNoOfStars()
+        }),
             this.updateGameStatus
         );
     };
@@ -186,10 +186,10 @@ class Game extends Component {
     updateGameStatus = () => {
         this.setState(prevState => {
             if (prevState.usedNumbers.length === 9) {
-                return {gameStatus: ' You Won!!'};
+                return { gameStatus: ' You Won!!' };
             }
             if (prevState.availableRedraws === 0) {
-                return {gameStatus: 'You Lost!!'};
+                return { gameStatus: 'You Lost!!' };
             }
         });
     };
@@ -214,7 +214,7 @@ class Game extends Component {
                 <hr />
                 <div>
                     <Row>
-                        <Stars numberOfStars={randomNumberOfStars}/>
+                        <Stars numberOfStars={randomNumberOfStars} />
                         <GameButton
                             selectedNumbers={selectedNumbers}
                             checkAnswer={this.checkAnswer}
@@ -236,12 +236,12 @@ class Game extends Component {
                         resetGame={this.resetGame}
                     />
                 ) : (
-                    <Numbers
-                        selectedNumbers={selectedNumbers}
-                        selectNumber={this.selectNumber}
-                        usedNumbers={usedNumbers}
-                    />
-                )}
+                        <Numbers
+                            selectedNumbers={selectedNumbers}
+                            selectNumber={this.selectNumber}
+                            usedNumbers={usedNumbers}
+                        />
+                    )}
 
             </div>
         );
